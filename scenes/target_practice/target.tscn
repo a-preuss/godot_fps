@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c74jysg2x0b7c"]
+
+[ext_resource type="Script" uid="uid://saowf0aucqip" path="res://scenes/target_practice/target.gd" id="1_t2jmu"]
+[ext_resource type="Script" uid="uid://dm5axbcvvmo2h" path="res://scenes/target_practice/target_hitbox.gd" id="2_8am68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hr3o"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Target" type="Node3D" unique_id=1106016267]
+script = ExtResource("1_t2jmu")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1510035004]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+use_collision = true
+radius = 0.3
+height = 0.1
+sides = 36
+material = SubResource("StandardMaterial3D_3hr3o")
+script = ExtResource("2_8am68")
+
+[node name="LifeTime" type="Timer" parent="." unique_id=574431760]
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

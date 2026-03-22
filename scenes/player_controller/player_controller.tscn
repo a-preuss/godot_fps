@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://cid3t51bcejlw"]
+
+[ext_resource type="Script" uid="uid://chd2mpmefonah" path="res://scenes/player_controller/aim_look.gd" id="1_e4srk"]
+[ext_resource type="Script" uid="uid://bw7f06so2jusk" path="res://scenes/player_controller/player_movement.gd" id="2_vcr71"]
+[ext_resource type="PackedScene" uid="uid://b8uf22i0og75c" path="res://scenes/player_controller/weapon_manager.tscn" id="4_eor5v"]
+[ext_resource type="Script" uid="uid://cjj4aqmva3f4i" path="res://scenes/player_controller/hud_wip.gd" id="4_r3dhx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e4srk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4srk"]
+albedo_color = Color(0.7643845, 0.45950824, 5.7756904e-07, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_urp3m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_eor5v"]
+radius = 0.6
+
+[node name="PlayerController" type="CharacterBody3D" unique_id=369875553]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1313231264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_e4srk")
+surface_material_override/0 = SubResource("StandardMaterial3D_e4srk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1553108654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_urp3m")
+
+[node name="PickupShapecast" type="ShapeCast3D" parent="." unique_id=734295209]
+shape = SubResource("CylinderShape3D_eor5v")
+target_position = Vector3(0, 1, 0)
+collision_mask = 128
+
+[node name="WorldModelContainer" type="Node3D" parent="." unique_id=942799316]
+unique_name_in_owner = true
+
+[node name="Head" type="Node3D" parent="." unique_id=854235108]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="CameraContainer" type="Node3D" parent="Head" unique_id=1006851033]
+
+[node name="Camera3D" type="Camera3D" parent="Head/CameraContainer" unique_id=1230004872]
+metadata/_edit_lock_ = true
+
+[node name="WeaponRayCast" type="RayCast3D" parent="Head/CameraContainer/Camera3D" unique_id=1735191463]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, -0.100000024)
+enabled = false
+target_position = Vector3(0, 300, 0)
+metadata/_edit_lock_ = true
+
+[node name="ViewmodelContainer" type="Node3D" parent="Head/CameraContainer/Camera3D" unique_id=2044389505]
+unique_name_in_owner = true
+
+[node name="AimLook" type="Node" parent="." unique_id=1895192733]
+script = ExtResource("1_e4srk")
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=1804845501]
+script = ExtResource("2_vcr71")
+jump_velocity = 4.5
+auto_bhop = true
+
+[node name="WeaponManager" parent="." unique_id=1375285739 instance=ExtResource("4_eor5v")]
+
+[node name="HUD WIP" type="Control" parent="." unique_id=1204556998]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_r3dhx")
+
+[node name="ColorRect" type="ColorRect" parent="HUD WIP" unique_id=336323613]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HUD WIP" unique_id=1686720931]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="update_hud" from="WeaponManager" to="HUD WIP" method="_on_weapon_manager_update_hud"]

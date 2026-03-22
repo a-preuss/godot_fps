@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b8uf22i0og75c"]
+
+[ext_resource type="Script" uid="uid://01kttv0vexxc" path="res://scenes/player_controller/weapon_manager.gd" id="1_2pya7"]
+
+[node name="WeaponManager" type="Node3D" unique_id=198979499 node_paths=PackedStringArray("weapon_slots")]
+script = ExtResource("1_2pya7")
+weapon_slots = [NodePath("PrimarySlot"), NodePath("SecondarySlot"), NodePath("MeleeSlot")]
+
+[node name="PrimarySlot" type="Node3D" parent="." unique_id=2133987837]
+
+[node name="SecondarySlot" type="Node3D" parent="." unique_id=1577923113]
+
+[node name="MeleeSlot" type="Node3D" parent="." unique_id=1420912194]

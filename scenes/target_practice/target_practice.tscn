@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://txf4p4usk5ft"]
+
+[ext_resource type="Script" uid="uid://bf5rbep1f8l3i" path="res://scenes/target_practice/target_practice.gd" id="1_gmgtr"]
+[ext_resource type="PackedScene" uid="uid://c74jysg2x0b7c" path="res://scenes/target_practice/target.tscn" id="2_bvqm6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40dg2"]
+size = Vector3(6, 3, 0.2)
+
+[node name="TargetPractice" type="Node3D" unique_id=1512695668]
+script = ExtResource("1_gmgtr")
+target_packed = ExtResource("2_bvqm6")
+
+[node name="TargetSpawnTimer" type="Timer" parent="." unique_id=982984639]
+wait_time = 2.0
+ignore_time_scale = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1149055309]
+
+[node name="TargetPracticeArea" type="CollisionShape3D" parent="Area3D" unique_id=1505193752]
+shape = SubResource("BoxShape3D_40dg2")
+
+[connection signal="timeout" from="TargetSpawnTimer" to="." method="_on_timer_timeout"]
