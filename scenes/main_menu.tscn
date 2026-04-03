@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://d2a1mc0kmi5op"]
+
+[ext_resource type="PackedScene" uid="uid://11swx3bwq51d" path="res://scenes/test_map.tscn" id="1_l6cm7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ss0f2"]
+
+[sub_resource type="Sky" id="Sky_a0tk4"]
+sky_material = SubResource("ProceduralSkyMaterial_ss0f2")
+
+[sub_resource type="Environment" id="Environment_ekxnf"]
+background_mode = 2
+sky = SubResource("Sky_a0tk4")
+tonemap_agx_contrast = 2.0
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 0.4569397
+sdfgi_y_scale = 0
+fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_bqqt6"]
+font_size = 81
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.22352941)
+
+[node name="MainMenu" type="Control" unique_id=1217600642]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background3D" type="SubViewportContainer" parent="." unique_id=1416859275]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Background3D" unique_id=340131441]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="TestMap" parent="Background3D/SubViewport" unique_id=1147293852 instance=ExtResource("1_l6cm7")]
+
+[node name="WorldEnvironment" parent="Background3D/SubViewport/TestMap" index="0" unique_id=1646601022]
+environment = SubResource("Environment_ekxnf")
+
+[node name="Camera3D" type="Camera3D" parent="Background3D/SubViewport/TestMap" unique_id=211162265]
+transform = Transform3D(0.63806915, 0.07243332, -0.76656455, 0, 0.9955654, 0.09407181, 0.76997906, -0.060024317, 0.6352396, -37.994434, 3.4703772, 19.597551)
+
+[node name="GameTitle" type="Label" parent="." unique_id=1452849997]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -157.0
+offset_right = 140.0
+offset_bottom = -134.0
+grow_vertical = 2
+text = "Jogo"
+label_settings = SubResource("LabelSettings_bqqt6")
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="." unique_id=1391559183]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 93.0
+offset_top = -19.0
+offset_right = 133.0
+offset_bottom = 21.0
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="MainMenuButtons" unique_id=1464087898]
+layout_mode = 2
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="MainMenuButtons" unique_id=397167823]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="MainMenuButtons" unique_id=2070858921]
+layout_mode = 2
+text = "Quit"
+
+[editable path="Background3D/SubViewport/TestMap"]

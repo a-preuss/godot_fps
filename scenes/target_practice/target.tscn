@@ -20,4 +20,5 @@ script = ExtResource("2_8am68")
 
 [node name="LifeTime" type="Timer" parent="." unique_id=574431760]
 
+[connection signal="hit" from="CSGCylinder3D" to="." method="_on_csg_cylinder_3d_hit"]
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

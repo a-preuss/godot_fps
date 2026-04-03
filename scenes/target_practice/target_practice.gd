@@ -21,6 +21,8 @@ const SPAWN_Z = 0.11
 
 @onready var areashape = BoxShape3D.new()
 
+@onready var audio = $AudioStreamPlayer3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer.wait_time = target_spawn_wait_time
@@ -55,12 +57,16 @@ func _on_timer_timeout():
 	new_target.lifetime = target_lifetime
 	areanode.add_child(new_target)
 	new_target.lifetime_over.connect(_on_lifetime_over)
+	new_target.hit_occurred.connect(_on_hit_occurred)
 	var half_width: float = width/2
 	var half_height: float = height/2
 	var new_position: Vector3 = Vector3(randf_range(-half_width, half_width), randf_range(-half_height, half_height), 0.2)
+	audio.position = new_position
 	new_target.position = new_position
 	new_target.visible = true
 	
+func _on_hit_occurred():
+	audio.play()
 	
 func _on_lifetime_over(emitter: Target):
 	emitter.queue_free()

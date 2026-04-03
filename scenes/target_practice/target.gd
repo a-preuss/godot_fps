@@ -4,6 +4,7 @@ class_name Target
 @onready var timer: Timer = $LifeTime
 
 signal lifetime_over(emitter:Target)
+signal hit_occurred
 
 var lifetime: float = 1
 
@@ -30,3 +31,8 @@ func _ready():
 func _on_life_time_timeout():
 	print("timer do target acabou")
 	emit_signal("lifetime_over", self)
+
+
+func _on_csg_cylinder_3d_hit():
+	hit_occurred.emit()
+	queue_free()

@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://b3wuhxvl1x6oh"]
+
+[ext_resource type="Script" uid="uid://cybk8j5drmwto" path="res://scenes/weapons/pistol/pistol_bullet_trail.gd" id="1_3xpir"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4r75u"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+depth_draw_mode = 2
+disable_ambient_light = true
+albedo_color = Color(0.99215686, 0.74509805, 0.07058824, 0.5647059)
+emission_enabled = true
+emission = Color(0.57506347, 0.38960344, 0, 1)
+emission_energy_multiplier = 10.52
+disable_receive_shadows = true
+z_clip_scale = 0.5
+proximity_fade_distance = 2008.62
+distance_fade_max_distance = 2.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3xpir"]
+material = SubResource("StandardMaterial3D_4r75u")
+radius = 0.016
+height = 0.124
+radial_segments = 4
+rings = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lf8d"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 2
+albedo_color = Color(0.40784314, 0.46666667, 1, 0.89411765)
+emission_enabled = true
+emission = Color(2.9841065e-06, 0.50253695, 0.7660774, 1)
+emission_energy_multiplier = 2.29
+rim_tint = 1.0
+grow_amount = 0.154
+z_clip_scale = 0.01
+fov_override = 41.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ij5g2"]
+material = SubResource("StandardMaterial3D_5lf8d")
+radius = 0.0085
+height = 0.077
+radial_segments = 4
+rings = 0
+
+[sub_resource type="Gradient" id="Gradient_5lf8d"]
+offsets = PackedFloat32Array(0.5868056, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ij5g2"]
+gradient = SubResource("Gradient_5lf8d")
+fill_from = Vector2(1, 0.62740386)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6in4"]
+transparency = 1
+depth_draw_mode = 2
+albedo_color = Color(0.99215686, 0.74509805, 0.07058824, 0.6509804)
+albedo_texture = SubResource("GradientTexture2D_ij5g2")
+emission_enabled = true
+emission = Color(0.7139305, 0.53321046, 1.92523e-07, 1)
+emission_energy_multiplier = 4.21
+rim = 0.64
+rim_tint = 1.0
+z_clip_scale = 0.01
+distance_fade_max_distance = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jffhl"]
+material = SubResource("StandardMaterial3D_o6in4")
+top_radius = 0.0
+bottom_radius = 0.015
+height = 1.434
+radial_segments = 4
+rings = 0
+cap_top = false
+cap_bottom = false
+
+[node name="PistolBulletTrail" type="Node3D" unique_id=1774700062]
+script = ExtResource("1_3xpir")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1439340813]
+transform = Transform3D(-1.23, 0, -2.2468176e-07, 0, 1.23, 0, 1.8572484e-07, 0, -1.488, 0, 0, -1.3161591)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=345345356]
+transform = Transform3D(1, 0, 0, 0, -7.6713484e-08, 1, 0, -1.755, -4.371139e-08, -2.8646119e-09, 0, 0.03276734)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CapsuleMesh_3xpir")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D" unique_id=168486659]
+transform = Transform3D(1, 0, 0, 0, -7.6713484e-08, 1, 0, -1.755, -4.371139e-08, -1.4149031e-09, 0, 0.04113335)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CapsuleMesh_ij5g2")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D" unique_id=45089105]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.9569053e-08, 0, -0.7493534)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CylinderMesh_jffhl")
+skeleton = NodePath("../MeshInstance3D")

@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://11swx3bwq51d"]
+
+[ext_resource type="Material" uid="uid://dqm3vkhms5cil" path="res://assets/prototyping_materials/wall_material_white.tres" id="1_57l66"]
+[ext_resource type="Texture2D" uid="uid://dt08ep3ukumfk" path="res://addons/kenney_prototype_textures/dark/texture_07.png" id="2_p21b5"]
+[ext_resource type="Texture2D" uid="uid://nchlvws2elpv" path="res://addons/kenney_prototype_textures/dark/texture_04.png" id="3_bdpbv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ss0f2"]
+
+[sub_resource type="Sky" id="Sky_a0tk4"]
+sky_material = SubResource("ProceduralSkyMaterial_ss0f2")
+
+[sub_resource type="Environment" id="Environment_kddbv"]
+background_mode = 2
+sky = SubResource("Sky_a0tk4")
+tonemap_agx_contrast = 2.0
+sdfgi_use_occlusion = true
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 0.4569397
+sdfgi_y_scale = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pw728"]
+albedo_texture = ExtResource("2_p21b5")
+roughness = 0.35
+roughness_texture_channel = 4
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gsqv"]
+albedo_texture = ExtResource("3_bdpbv")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u56q5"]
+size = Vector3(14.994995, 3.963745, 9.867249)
+
+[node name="TestMap" type="Node3D" unique_id=1147293852]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1646601022]
+environment = SubResource("Environment_kddbv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=680294524]
+transform = Transform3D(0.988756, 0.0794632, -0.126675, -5.56713e-09, 0.847122, 0.531399, 0.149536, -0.525424, 0.837597, 0, 15, 0)
+shadow_enabled = true
+
+[node name="Mapa" type="CSGCombiner3D" parent="." unique_id=490497063]
+transform = Transform3D(3.175, 0, 0, 0, 1.28, 0, 0, 0, 3.21, 0, 0, 0)
+use_collision = true
+collision_layer = 9
+collision_mask = 9
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Mapa" unique_id=1465662623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+use_collision = true
+size = Vector3(15, 4, 10)
+material = ExtResource("1_57l66")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Mapa" unique_id=1494792457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+size = Vector3(14, 4, 9)
+material = ExtResource("1_57l66")
+metadata/_edit_lock_ = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Mapa" unique_id=1668864404]
+transform = Transform3D(-2.4478376e-07, -0.4, 0, 5.6, -1.7484556e-08, 0, 0, 0, 2.505, -7.2675, -0.074375, 0)
+operation = 2
+radius = 0.7
+height = 1.419
+sides = 36
+metadata/_edit_lock_ = true
+
+[node name="Chão" type="CSGBox3D" parent="Mapa" unique_id=1237371260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(30, 1, 30)
+material = SubResource("StandardMaterial3D_pw728")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Mapa" unique_id=158104036]
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Mapa" unique_id=1186506002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+gi_mode = 2
+size = Vector3(0.2, 2, 3)
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Mapa" unique_id=1689614505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+size = Vector3(0.2, 2, 3)
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Mapa" unique_id=1657741969]
+transform = Transform3D(1, 0, 0, 0, 1.5569408, -0.03579535, 0, 1.1573831, 0.048152808, -0.106827125, 0.36095324, 4.0600553)
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Mapa" unique_id=1008287826]
+transform = Transform3D(1, 0, 0, 0, 1.804227, -0.022051444, 0, 0.7129969, 0.05580084, -1.1641027, 0.3588334, 4.168308)
+size = Vector3(1, 1, 1.1922607)
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Mapa" unique_id=1338699068]
+transform = Transform3D(1, 0, 0, 0, 1.8111454, -0.021502076, 0, 0.69523364, 0.05601482, -2.2734559, 0.3588334, 4.3041987)
+size = Vector3(1, 1, 1.1922607)
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Mapa" unique_id=1192930650]
+transform = Transform3D(1, 0, 0, 0, 1.1600167, -0.04809214, 0, 1.5549793, 0.035876814, 1.0345764, 0.3609532, 4.162944)
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Mapa" unique_id=95394208]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, 0.6427876, 0, -0.6427876, 0.76604444, 0.254, 5.91264, -2.9111662)
+size = Vector3(15.972656, 0.32617188, 7.9529724)
+material = SubResource("StandardMaterial3D_6gsqv")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Mapa" unique_id=1064937158]
+transform = Transform3D(1, 0, 0, 0, 0.7660443, -0.64278746, 0, 0.6427876, 0.7660444, 0.254, 5.9304905, 2.8898926)
+size = Vector3(15.972656, 0.32617188, 8.008514)
+material = SubResource("StandardMaterial3D_6gsqv")
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Mapa" unique_id=631866468]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.1460104, 7.466079, -0.37259865)
+light_energy = 14.591
+light_indirect_energy = 0.5
+spot_range = 38.534
+spot_angle = 81.05
+spot_angle_attenuation = 0.7320418
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Mapa" unique_id=1065590720]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.2740784, 7.466079, -0.37259865)
+light_energy = 14.591
+light_indirect_energy = 0.5
+spot_range = 26.174
+spot_attenuation = 1.09
+spot_angle = 79.52
+spot_angle_attenuation = 0.7320418
+metadata/_edit_lock_ = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Mapa" unique_id=493444702]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.31001115, 7.466079, -0.37259865)
+light_energy = 14.591
+light_indirect_energy = 0.5
+spot_range = 42.749
+spot_angle = 74.87
+spot_angle_attenuation = 0.7320418
+metadata/_edit_lock_ = true
+
+[node name="Area3D" type="Area3D" parent="Mapa" unique_id=952244926]
+reverb_bus_enabled = true
+reverb_bus_name = &"Hall reverb"
+reverb_bus_amount = 1.0
+reverb_bus_uniformity = 0.44
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mapa/Area3D" unique_id=1558594584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056701414, 2.017502, -0.00967415)
+shape = SubResource("BoxShape3D_u56q5")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dp7wvljysqaw6"]
+
+[ext_resource type="Script" uid="uid://dty0s7od2ka1u" path="res://resources/weapon_pickup_base.gd" id="1_0reak"]
+
+[node name="WeaponPickup" type="Node3D" unique_id=1968485871]
+script = ExtResource("1_0reak")

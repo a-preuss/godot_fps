@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cheuymf3532c5"]
+
+[ext_resource type="Script" uid="uid://ck0vat6ht2x4j" path="res://scenes/weapons/assault_rifle/assault_rifle.gd" id="1_xm7t6"]
+
+[node name="AssaultRifle" type="Node" unique_id=1697070991]
+script = ExtResource("1_xm7t6")
+max_reserve_ammo = 90
+reserve_ammo = 90
+clip_size = 30
+current_clip = 30
+bullets_per_shot = 1
+damage = 30.0
+weapon_range = 300
+is_hitscan = true

@@ -1,5 +1,7 @@
 extends CSGCylinder3D
 
+signal hit
+
 func take_damage(_damage: float):
 	print("hit!")
-	get_parent().queue_free()
+	hit.emit()

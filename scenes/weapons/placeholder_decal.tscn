@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://tvyrwxua8rdh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_euvwt"]
+
+[node name="Node3D" type="Node3D" unique_id=1588578005]
+
+[node name="Decal" type="Decal" parent="." unique_id=1944251680]
+size = Vector3(0.111, 0.111, 0.111)
+texture_albedo = SubResource("PlaceholderTexture2D_euvwt")

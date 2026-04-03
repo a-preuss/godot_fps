@@ -2,13 +2,24 @@
 
 [ext_resource type="Script" uid="uid://bf5rbep1f8l3i" path="res://scenes/target_practice/target_practice.gd" id="1_gmgtr"]
 [ext_resource type="PackedScene" uid="uid://c74jysg2x0b7c" path="res://scenes/target_practice/target.tscn" id="2_bvqm6"]
+[ext_resource type="AudioStream" uid="uid://bru11yv65lm8g" path="res://sounds/snare01.wav" id="3_ep4lx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_40dg2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ep4lx"]
 size = Vector3(6, 3, 0.2)
 
 [node name="TargetPractice" type="Node3D" unique_id=1512695668]
 script = ExtResource("1_gmgtr")
 target_packed = ExtResource("2_bvqm6")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=178967999]
+stream = ExtResource("3_ep4lx")
+attenuation_model = 3
+unit_size = 44.84
+max_distance = 20.0
+max_polyphony = 5
+bus = &"Targets"
+area_mask = 0
+attenuation_filter_cutoff_hz = 8935.0
 
 [node name="TargetSpawnTimer" type="Timer" parent="." unique_id=982984639]
 wait_time = 2.0
@@ -17,6 +28,6 @@ ignore_time_scale = true
 [node name="Area3D" type="Area3D" parent="." unique_id=1149055309]
 
 [node name="TargetPracticeArea" type="CollisionShape3D" parent="Area3D" unique_id=1505193752]
-shape = SubResource("BoxShape3D_40dg2")
+shape = SubResource("BoxShape3D_ep4lx")
 
 [connection signal="timeout" from="TargetSpawnTimer" to="." method="_on_timer_timeout"]
